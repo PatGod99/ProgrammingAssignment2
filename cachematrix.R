@@ -1,8 +1,9 @@
 # makeCachMatrix and cacheSolve
-# created by: Luis Daniel Sánchez Godínez
+# created by: Luis Daniel SÃ¡nchez GodÃ­nez
 
 
 ## MakeCacheMatrix function creates a special matrix and cache its inverse
+# Creates a list (or a 4x1 Matrix)
 
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
@@ -13,7 +14,6 @@ makeCacheMatrix <- function(x = matrix()) {
   get <- function() x
   setinv <- function(inv) i <<- inv
   getinv <- function() i
-  #matrix(c(set, setinv, get, getinv),2,2)
   list(set = set, get = get,
        setinv = setinv,
        getinv = getinv)
@@ -24,7 +24,6 @@ makeCacheMatrix <- function(x = matrix()) {
 ## cacheSolve function computes the inverse if it has not already been calculated
 
 cacheSolve <- function(x, ...) {
-  #x <- list( set = x[1,1], get = x[1,2], setinv = x[2,1], getinv = x[2,2])
   i <- x$getinv()
   if(!is.null(i)) {
     message("getting cached data")
@@ -37,12 +36,11 @@ cacheSolve <- function(x, ...) {
 
 }
 
+# Test
 
 M <- matrix(c(12,1,21,55, 2, 21, 21, 21,21 ),3,3)
 M
 x <- makeCacheMatrix(M)
-
 x
-
 cacheSolve(x)
 
